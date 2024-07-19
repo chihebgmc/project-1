@@ -7,7 +7,6 @@ import {
   AUTH_PROFILE,
   AUTH_REGISTER,
 } from './types';
-import { header } from 'express-validator';
 
 const API_URL = '/api/users/';
 
