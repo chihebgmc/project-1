@@ -3,7 +3,6 @@ const path = require('path');
 require('dotenv').config();
 require('colors');
 const connectDB = require('./config/db');
-const { errorMiddleware } = require('./middleware/errorMiddleware');
 
 // Init app
 const app = express();
@@ -16,7 +15,6 @@ connectDB();
 app.use(express.json()); // {"name": "John", "age": 24}
 app.use(express.urlencoded({ extended: false })); // name=John&age=24
 
-// app.use('/api/contacts', require('./routes/contactRoutes'));
 app.use('/api/users', require('./routes/userRoutes'));
 
 // Use the client app
@@ -28,7 +26,5 @@ app.get('*', (req, res) => {
 });
 
 console.log(path.join(__dirname, '/../frontend/build'));
-
-// app.use(errorMiddleware);
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
